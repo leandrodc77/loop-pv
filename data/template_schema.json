@@ -1,0 +1,121 @@
+[
+  {
+    "label": "PAS",
+    "cell": "B2",
+    "unit": "mmHg",
+    "kind": "input",
+    "formula": null
+  },
+  {
+    "label": "PAD",
+    "cell": "B3",
+    "unit": "mmHg",
+    "kind": "input",
+    "formula": null
+  },
+  {
+    "label": "PAt",
+    "cell": "B4",
+    "unit": "mmHg",
+    "kind": "derived",
+    "formula": "=IF(B2=\"\",\"\",0.9*B2)"
+  },
+  {
+    "label": "VDF",
+    "cell": "B5",
+    "unit": "mL",
+    "kind": "input",
+    "formula": null
+  },
+  {
+    "label": "VSF",
+    "cell": "B6",
+    "unit": "mL",
+    "kind": "input",
+    "formula": null
+  },
+  {
+    "label": "VS",
+    "cell": "B7",
+    "unit": "mL",
+    "kind": "derived",
+    "formula": "=IF(OR(B5=\"\",B6=\"\"),\"\",B5-B6)"
+  },
+  {
+    "label": "Fração de ejeção (FE)",
+    "cell": "B8",
+    "unit": "% (em decimal)",
+    "kind": "derived",
+    "formula": "=IF(OR(B5=\"\",B6=\"\"),\"\",(B5-B6)/B5*100)"
+  },
+  {
+    "label": "PET (CIV)",
+    "cell": "B9",
+    "unit": "ms",
+    "kind": "input",
+    "formula": null
+  },
+  {
+    "label": "ET",
+    "cell": "B10",
+    "unit": "ms",
+    "kind": "input",
+    "formula": null
+  },
+  {
+    "label": "tNd",
+    "cell": "B11",
+    "unit": "(adimensional)",
+    "kind": "derived",
+    "formula": "=IF(OR(B9=\"\",B10=\"\"),\"\",B9/B10)"
+  },
+  {
+    "label": "Endavg",
+    "cell": "B12",
+    "unit": "(adimensional)",
+    "kind": "derived",
+    "formula": "=IF(B11=\"\",\"\",0.35695-7.2266*B11+74.249*B11^2-307.39*B11^3+684.54*B11^4-856.92*B11^5+571.95*B11^6-159.1*B11^7)"
+  },
+  {
+    "label": "Endest",
+    "cell": "B13",
+    "unit": "(adimensional)",
+    "kind": "derived",
+    "formula": "=IF(OR(B12=\"\",B8=\"\",B3=\"\",B4=\"\"),\"\",0.0275-0.165*(B8/100)+0.3656*(B3/B4)+0.515*B12)"
+  },
+  {
+    "label": "Ees",
+    "cell": "B14",
+    "unit": "mmHg/mL",
+    "kind": "input",
+    "formula": null
+  },
+  {
+    "label": "Ea",
+    "cell": "B15",
+    "unit": "mmHg/mL",
+    "kind": "derived",
+    "formula": "=IF(OR(B4=\"\",B7=\"\"),\"\",B4/B7)"
+  },
+  {
+    "label": "(VAC = Ea/Ees)",
+    "cell": "B16",
+    "unit": "(adimensional)",
+    "kind": "derived",
+    "formula": "=IF(OR(B15=\"\",B14=\"\"),\"\",B15/B14)"
+  },
+  {
+    "label": "V0",
+    "cell": "B17",
+    "unit": null,
+    "kind": "input",
+    "formula": null
+  },
+  {
+    "label": "Ptop ou PAS",
+    "cell": "B18",
+    "unit": null,
+    "kind": "derived",
+    "formula": "=IF(OR(B14=\"\",B6=\"\",B17=\"\"),\"\",B14*(B6-B17))"
+  }
+]
